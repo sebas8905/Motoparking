@@ -1,0 +1,282 @@
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.acktos.motoparking.AddParkingDataActivity"
+    android:id="@+id/activity_add_parking_data">
+
+    <!-- Address -->
+
+    <TextView
+        android:id="@+id/parking_label_address"
+        android:text="@string/label_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:id="@+id/separator"
+        android:visibility="visible"
+        android:layout_below="@id/parking_label_address"
+        android:background="@android:color/holo_blue_light"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/field_address"
+        android:layout_below="@+id/separator"
+        />
+
+    <!-- Schedule -->
+
+    <TextView
+        android:id="@+id/parking_label_schedule"
+        android:text="@string/label_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/field_address"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:id="@+id/separator2"
+        android:visibility="visible"
+        android:layout_below="@id/parking_label_schedule"
+        android:background="@android:color/holo_blue_light"/>
+
+    <LinearLayout
+        android:id="@+id/linear_schedule"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/parking_label_schedule"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_initial"
+            android:id="@+id/timepicker_initial"
+            android:editable="false"
+            android:onClick="showTimePickerInitialDialog"
+            android:layout_weight="1" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_final"
+            android:onClick="showTimePickerFinalDialog"
+            android:id="@+id/timepicker_final"
+            android:editable="false"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <!-- Prices -->
+
+    <TextView
+        android:id="@+id/parking_label_prices"
+        android:text="@string/label_prices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_schedule"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:id="@+id/separator3"
+        android:visibility="visible"
+        android:layout_below="@id/parking_label_prices"
+        android:background="@android:color/holo_blue_light"/>
+
+    <!--Price minute-->
+
+    <Switch
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_free"
+        android:id="@+id/switch_free"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/separator3"
+        android:checked="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textOn="Si"
+        android:textOff="No"/>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/linear_prices"
+        android:layout_below="@+id/switch_free">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_minute"
+        android:id="@+id/label_minute"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/price_minute"
+        android:hint="@string/label_price_minute"
+        android:layout_below="@+id/switch_free"
+        android:layout_alignRight="@+id/switch_free"
+        android:layout_alignEnd="@+id/switch_free" />
+
+    <!-- Close price minute -->
+
+    <!--Price hour-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_hour"
+        android:id="@+id/label_hour"
+        android:layout_alignBottom="@+id/price_hour"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/price_hour"
+        android:hint="@string/label_price_hour"
+        android:layout_below="@+id/label_minute"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <!-- Close price hour -->
+
+    <!--Price standard-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_standard"
+        android:id="@+id/label_standard"
+        android:layout_alignBottom="@+id/price_standard"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/price_standard"
+        android:hint="@string/label_price_standard"
+        android:layout_below="@+id/label_hour"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    </LinearLayout>
+    <!-- Close price standard -->
+
+    <!-- Comments -->
+
+    <TextView
+        android:id="@+id/parking_label_comment"
+        android:text="@string/label_comments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_prices"
+        android:paddingTop="16dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:id="@+id/separator4"
+        android:visibility="visible"
+        android:layout_below="@id/parking_label_comment"
+        android:background="@android:color/holo_blue_light"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/field_comment"
+        android:layout_below="@+id/separator4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <!-- Close comments -->
+
+    <!-- Image -->
+
+    <TextView
+        android:id="@+id/parking_label_image"
+        android:text="@string/label_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:paddingTop="16dp"
+        android:layout_below="@+id/field_comment"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:id="@+id/separator5"
+        android:visibility="visible"
+        android:layout_below="@id/parking_label_image"
+        android:background="@android:color/holo_blue_light"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:textColor="@color/white"
+        android:layout_marginTop="16dp"
+        android:text="@string/label_take_photo"
+        android:id="@+id/take_photo"
+        android:layout_below="@+id/separator5"
+        android:onClick="takePhoto"/>
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/take_photo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imagetext"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/imageview" />
+
+    <!-- Image -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/coordinates"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/imagetext" />
+
+
+</RelativeLayout>
+</ScrollView>

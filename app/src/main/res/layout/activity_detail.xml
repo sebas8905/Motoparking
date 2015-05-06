@@ -1,0 +1,212 @@
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    tools:context="com.acktos.motoparking.DetailActivity"
+    android:paddingBottom="16dp"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200px"
+        android:id="@+id/parking_image"
+        android:background="@drawable/load"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/parking_price"
+        android:paddingTop="16dp"
+        android:textSize="50dp"
+        android:layout_below="@+id/parking_image"
+        android:layout_alignLeft="@+id/separator"
+        android:layout_alignStart="@+id/separator" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/parking_label_price"
+        android:textSize="20dp"
+        android:layout_alignBaseline="@+id/parking_price"
+        android:layout_alignBottom="@+id/parking_price"
+        android:layout_alignRight="@+id/separator"
+        android:layout_alignEnd="@+id/separator" />
+
+    <!-- Address -->
+
+    <TextView
+        android:id="@+id/parking_label_address"
+        android:layout_below="@id/parking_label_price"
+        android:text="@string/label_address"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:id="@+id/separator"
+        android:visibility="visible"
+        android:layout_below="@id/parking_label_address"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@android:color/holo_blue_light"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@id/parking_label_address"
+        android:layout_height="wrap_content"
+        android:text="@string/label_no_apply"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:id="@+id/parking_address" />
+
+    <!-- Schedule -->
+
+    <TextView
+        android:id="@+id/parking_label_schedule"
+        android:layout_below="@id/parking_address"
+        android:text="@string/label_schedule"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:id="@+id/separator2"
+        android:visibility="visible"
+        android:layout_below="@id/parking_label_schedule"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@android:color/holo_blue_light"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@id/separator2"
+        android:layout_height="wrap_content"
+        android:text="@string/label_no_apply"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:id="@+id/parking_schedule" />
+
+    <!-- Prices -->
+
+    <TextView
+        android:id="@+id/parking_label_prices"
+        android:layout_below="@id/parking_schedule"
+        android:text="@string/label_prices"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:id="@+id/separator3"
+        android:visibility="visible"
+        android:layout_below="@id/parking_label_prices"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@android:color/holo_blue_light"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@id/separator3"
+        android:layout_height="wrap_content"
+        android:text="@string/label_no_apply"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:id="@+id/parking_price_value" />
+
+    <!-- Comments -->
+
+    <TextView
+        android:id="@+id/parking_label_comments"
+        android:layout_below="@id/parking_price_value"
+        android:text="@string/label_comments"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:id="@+id/separator4"
+        android:visibility="visible"
+        android:layout_below="@id/parking_label_comments"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@android:color/holo_blue_light"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@id/separator4"
+        android:layout_height="wrap_content"
+        android:text="@string/label_no_comments"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:id="@+id/parking_comments" />
+
+    <!-- Reviews -->
+
+    <TextView
+        android:id="@+id/parking_label_reviews"
+        android:layout_below="@id/parking_comments"
+        android:text="@string/label_reviews"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:id="@+id/separator5"
+        android:visibility="visible"
+        android:layout_below="@id/parking_label_reviews"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/holo_blue_light"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parking_reviews"
+        android:layout_below="@id/separator5"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+    />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/parking_loading"
+        android:layout_below="@+id/parking_reviews"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
+</ScrollView>

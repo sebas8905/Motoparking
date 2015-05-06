@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#0a537c</color>
+    <color name="gray_hard">#AAAAAA</color>
+    <color name="gray_soft">#DDDDDD</color>
+
+    <string name="app_name">Motoparking</string>
+    <string name="map_name">Parqueaderos</string>
+    <string name="see_more">Ver más</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="calificate">Calificar</string>
+    <string name="save">Guardar</string>
+    <string name="share">Compartir</string>
+    <string name="title_activity_splash_screen">MotoParking</string>
+    <string name="loading">Cargando…</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!-- Urls -->
+    <string name="url_site">http://www.motopython.acktos.com.co</string>
+    <string name="url_site_images">http://www.motopython.acktos.com.co/media/</string>
+    <string name="url_get_parkings">http://www.motopython.acktos.com.co/get_parking/</string>
+    <string name="url_get_comments">http://www.motopython.acktos.com.co/get_comments/</string>
+    <string name="url_save_review">http://www.motopython.acktos.com.co/save_comment/</string>
+    <string name="url_save_parking">http://www.motopython.acktos.com.co/save_parking/</string>
+    <string name="url_save_image">http://www.motopython.acktos.com.co/save_picture/</string>
+    <string name="url_images">img/parkings/</string>
+    <!-- Close urls -->
+
+    <!-- Errors -->
+    <string name="error_name">Debe llenar el campo de nombre</string>
+    <string name="error_comment">Debe llenar el campo de comentario</string>
+    <string name="error_direction">Debe llenar el campo de dirección</string>
+    <string name="error_initial">Debe seleccionar la hora de apertura</string>
+    <string name="error_final">Debe seleccionar la hora de cierre</string>
+    <!-- Close errors -->
+
+    <string name="title_activity_detail">Parqueadero</string>
+    <string name="label_calificate">Calificar</string>
+    <string name="label_address">Dirección</string>
+    <string name="label_schedule">Horario</string>
+    <string name="label_prices">Precios</string>
+    <string name="label_comments">Comentarios</string>
+    <string name="label_reviews">Calificaciones</string>
+    <string name="label_review">Calificación</string>
+
+    <string name="label_minute">Minuto</string>
+    <string name="label_hour">Hora</string>
+    <string name="label_free">Gratis</string>
+    <string name="label_all">Todos</string>
+    <string name="label_price_minute">Precio por minuto</string>
+    <string name="label_price_hour">Precio por hora</string>
+    <string name="label_price_standard">Precio tarifa fija</string>
+
+    <string name="label_ask">$</string>
+    <string name="label_select">Selecciona tarifa</string>
+    <string name="label_standard">Tarifa fija</string>
+    <string name="label_no_reviews">Sin calificaciones.</string>
+    <string name="label_no_comments">Sin comentarios.</string>
+    <string name="label_no_apply">No aplica.</string>
+    <string name="title_activity_calificate">CalificateActivity</string>
+    <string name="label_name">Nombre</string>
+    <string name="add">Agregar</string>
+    <string name="parking_location">Definir ubicación</string>
+    <string name="parking_add_data">Agregar datos parqueadero</string>
+    <string name="title_activity_add_parking_data">Agregar parqueadero</string>
+    <string name="label_lv">Lunes a Viernes</string>
+    <string name="label_sat">Sábado</string>
+    <string name="label_sun">Domingo</string>
+    <string name="label_initial">Hora de apertura</string>
+    <string name="label_final">Hora de cierre</string>
+    <string name="save_parking">Guardar parqueadero</string>
+    <string name="label_image">Imagen</string>
+    <string name="label_take_photo">Tomar foto</string>
+    <string name="label_nothing">No hay parqueaderos disponibles en el momento.</string>
+
+</resources>
