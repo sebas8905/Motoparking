@@ -3,6 +3,7 @@ package com.acktos.motoparking;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -38,17 +39,23 @@ public class DetailActivity extends Activity {
     private String price;
     private String price_label;
     private List<String> array_prices = new ArrayList<>();
+    public String coordenadas;
+    public String coordenadas_parking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        coordenadas = getIntent().getExtras().getString("coordenadas");
+
         String data = getIntent().getExtras().getString("data_to_sent");
         Parking parking = new Parking(data);
 
         setTitle(parking.address);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        coordenadas_parking=parking.coordinates;
 
         parking_image = ((ImageView) findViewById(R.id.parking_image));
 
@@ -170,8 +177,8 @@ public class DetailActivity extends Activity {
 
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Parqueadero en "+parking.address+" - "+price+" "+price_label);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Motoparking.");
+                sendIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.label_in+parking.address+" - "+price+" "+price_label);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, R.string.app_name);
                 sendIntent.setType("text/plain");
                 startActivity(sendIntent);
 
@@ -200,6 +207,12 @@ public class DetailActivity extends Activity {
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
         listView.requestLayout();
+    }
+
+    public void goparking(View view)
+    {
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse("http://maps.google.com/maps?saddr="+coordenadas+"&daddr="+coordenadas_parking+""));
+        startActivity(intent);
     }
 
     private void GetReview(String id)

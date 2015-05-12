@@ -3,6 +3,7 @@
 
     <color name="white">#FFFFFF</color>
     <color name="blue">#0a537c</color>
+    <color name="green">#6cb51e</color>
     <color name="gray_hard">#AAAAAA</color>
     <color name="gray_soft">#DDDDDD</color>
 
@@ -76,5 +77,7 @@
     <string name="label_image">Imagen</string>
     <string name="label_take_photo">Tomar foto</string>
     <string name="label_nothing">No hay parqueaderos disponibles en el momento.</string>
+    <string name="label_go">Ver ruta</string>
+    <string name="label_in">Parqueadero en</string>
 
 </resources>

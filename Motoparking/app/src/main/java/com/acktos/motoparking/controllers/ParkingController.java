@@ -1,11 +1,16 @@
 package com.acktos.motoparking.controllers;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.util.Log;
 
 import com.acktos.motoparking.R;
 import com.acktos.motoparking.helpers.HttpRequest;
-import com.acktos.motoparking.helpers.InternalStorage;
 import com.acktos.motoparking.helpers.MultipartEntity;
 import com.acktos.motoparking.models.Parking;
 
@@ -29,7 +34,21 @@ import java.util.ArrayList;
 public class ParkingController extends Controller {
 
     private Context context;
+    private Uri uri;
+    private Cursor c;
     private final static String FILE_PARKINGS="com.acktos.motoparking.PARKINGS";
+    private static final Uri URI_CP = Uri.parse("content://content.provider.parkings/parkings");
+
+    private int id;
+    private String address;
+    private String coordinates;
+    private String schedule;
+    private int price_minute;
+    private int price_hour;
+    private int price_standard;
+    private String image;
+    private String comments;
+    private String creation_date;
 
     public ParkingController(Context context)
     {
@@ -45,9 +64,7 @@ public class ParkingController extends Controller {
         if(response!=null)
         {
             //Ponerle 200
-
-            InternalStorage storage = new InternalStorage(context);
-            storage.saveFile(FILE_PARKINGS,response);
+            ContentResolver CR = context.getContentResolver();
             //String content = storage.readFile(FILE_PARKINGS);
             //Log.i("Content", content);
 
@@ -58,6 +75,33 @@ public class ParkingController extends Controller {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     parkings.add(new Parking(jsonObject));
                 }
+                if(parkings.size()>0) {
+                    for (int i = 0; i < parkings.size(); i++) {
+                        Integer id = Integer.valueOf(parkings.get(i).id);
+                        String address = parkings.get(i).address;
+                        String coordinates = parkings.get(i).coordinates;
+                        String schedule = parkings.get(i).schedule;
+                        Integer price_minute = Integer.valueOf(parkings.get(i).price_minute);
+                        Integer price_hour = Integer.valueOf(parkings.get(i).price_hour);
+                        Integer price_standard = Integer.valueOf(parkings.get(i).price_standard);
+                        String image = parkings.get(i).image;
+                        String comments = parkings.get(i).comments;
+                        String creation_date = parkings.get(i).creation_date;
+                        // Insertamos registros
+                        try{
+                            uri = CR.insert(URI_CP, setVALORES(id, address, coordinates, schedule, price_minute, price_hour, price_standard, image, comments, creation_date));
+                            Log.i("REGISTRO INSERTADO", uri.toString());
+                            uri = Uri.parse("content://content.provider.parkings/parkings/"+id+"");
+                            CR.update(uri, setVALORES(id, address, coordinates, schedule, price_minute, price_hour, price_standard, image, comments, creation_date),null,null);
+                            Log.i("REGISTRO ACTUALIZADO", String.valueOf(id));
+                        }catch (SQLException e)
+                        {
+                            Log.i("Error",e.getMessage());
+                        }
+
+                    }
+                }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -69,10 +113,34 @@ public class ParkingController extends Controller {
     public ArrayList<Parking> getFile()
     {
         ArrayList<Parking> parkings = new ArrayList<Parking>();
-        InternalStorage storage = new InternalStorage(context);
-        String response = storage.readFile(FILE_PARKINGS);
+
+        ContentResolver CR = context.getContentResolver();
+
+        String[] valores_recuperar = {"_id", "address", "coordinates", "schedule", "price_minute", "price_hour", "price_standard", "image", "comments", "creation_date"};
+        c = CR.query(URI_CP, valores_recuperar, null, null, null);
+        c.moveToFirst();
+
+        String jsonparking="[";
+
+        do {
+            id = c.getInt(0);
+            address = c.getString(1);
+            coordinates = c.getString(2);
+            schedule = c.getString(3);
+            price_minute = c.getInt(4);
+            price_hour = c.getInt(5);
+            price_standard = c.getInt(6);
+            image = c.getString(7);
+            comments = c.getString(8);
+            creation_date = c.getString(9);
+            jsonparking += "{\"price_standard\": \""+price_standard+"\", \"price_hour\": \""+price_hour+"\", \"schedule\": \""+schedule+"\", \"price_minute\": \""+price_minute+"\", \"coordinates\": \""+coordinates+"\", \"creation_date\": \""+creation_date+"\", \"comments\": \""+comments+"\", \"image\": \""+image+"\", \"address\": \""+address+"\", \"id\": "+id+"},";
+        } while (c.moveToNext());
+
+        jsonparking = jsonparking.substring(0, jsonparking.length()-1);
+        jsonparking+="]";
+
         try {
-            JSONArray jsonArray = new JSONArray(response);
+            JSONArray jsonArray = new JSONArray(jsonparking);
             for(int i=0;i<jsonArray.length();i++)
             {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -152,5 +220,20 @@ public class ParkingController extends Controller {
         httpRequest.setParam("imagetext",imagetext);
         String response = httpRequest.postRequest();
         return response;
+    }
+
+    public ContentValues setVALORES(int id, String address, String coordinates, String schedule, int price_minute, int price_hour, int price_standard, String image, String comments, String creation_date) {
+        ContentValues valores = new ContentValues();
+        valores.put("_id", id);
+        valores.put("address", address);
+        valores.put("coordinates", coordinates);
+        valores.put("schedule", schedule);
+        valores.put("price_minute", price_minute);
+        valores.put("price_hour", price_hour);
+        valores.put("price_standard", price_standard);
+        valores.put("image", image);
+        valores.put("comments", comments);
+        valores.put("creation_date", creation_date);
+        return valores;
     }
 }

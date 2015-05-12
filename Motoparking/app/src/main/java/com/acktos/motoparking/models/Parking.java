@@ -17,6 +17,7 @@ public class Parking {
     public String price_standard;
     public String image;
     public String comments;
+    public String creation_date;
 
     public final static String KEY_ID="id";
     public final static String KEY_ADDRESS="address";
@@ -27,6 +28,7 @@ public class Parking {
     public final static String KEY_PRICE_STANDARD="price_standard";
     public final static String KEY_IMAGE="image";
     public final static String KEY_COMMENTS="comments";
+    public final static String KEY_CREATION_DATE="creation_date";
 
     public Parking(JSONObject jsonObject)
     {
@@ -40,6 +42,7 @@ public class Parking {
             this.price_standard = jsonObject.getString(KEY_PRICE_STANDARD);
             this.image = jsonObject.getString(KEY_IMAGE);
             this.comments = jsonObject.getString(KEY_COMMENTS);
+            this.creation_date = jsonObject.getString(KEY_CREATION_DATE);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -58,6 +61,7 @@ public class Parking {
             this.price_standard = jsonObject.getString(KEY_PRICE_STANDARD);
             this.image = jsonObject.getString(KEY_IMAGE);
             this.comments = jsonObject.getString(KEY_COMMENTS);
+            this.creation_date = jsonObject.getString(KEY_CREATION_DATE);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -78,6 +82,7 @@ public class Parking {
             jsonObject.put(KEY_PRICE_STANDARD,this.price_standard);
             jsonObject.put(KEY_IMAGE,this.image);
             jsonObject.put(KEY_COMMENTS,this.comments);
+            jsonObject.put(KEY_CREATION_DATE,this.creation_date);
             json=jsonObject.toString();
         } catch (JSONException e) {
             e.printStackTrace();

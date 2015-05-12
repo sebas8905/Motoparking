@@ -63,6 +63,12 @@
             android:label="@string/title_activity_add_parking_data"
             android:theme="@style/MyTheme">
         </activity>
+
+        <provider
+            android:name=".ContentProvider"
+            android:authorities="content.provider.parkings" >
+        </provider>
+
     </application>
 
 </manifest>

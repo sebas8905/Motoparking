@@ -16,13 +16,25 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        android:text="@string/label_go"
+        android:id="@+id/goparking"
+        android:onClick="goparking"
+        android:layout_below="@+id/parking_image"
+        android:layout_centerHorizontal="true" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/parking_price"
+        android:text="3000"
         android:paddingTop="16dp"
         android:textSize="50dp"
-        android:layout_below="@+id/parking_image"
+        android:layout_below="@+id/goparking"
         android:layout_alignLeft="@+id/separator"
         android:layout_alignStart="@+id/separator" />
 
@@ -31,6 +43,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/parking_label_price"
         android:textSize="20dp"
+        android:text="tarifa fija"
         android:layout_alignBaseline="@+id/parking_price"
         android:layout_alignBottom="@+id/parking_price"
         android:layout_alignRight="@+id/separator"

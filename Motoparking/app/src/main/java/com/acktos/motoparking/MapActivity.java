@@ -4,8 +4,10 @@ package com.acktos.motoparking;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.SpannableString;
@@ -45,6 +47,7 @@ public class MapActivity extends FragmentActivity implements
         GoogleMap.OnInfoWindowClickListener {
 
     private ArrayList<Parking> parkings;
+    public String coordenadas;
 
     /** Demonstrates customizing the info window and/or its contents. */
     class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
@@ -110,6 +113,7 @@ public class MapActivity extends FragmentActivity implements
         setContentView(R.layout.activity_map);
 
         ParkingController parkingController = new ParkingController(MapActivity.this);
+
         try {
             this.parkings = parkingController.getFile();
         }
@@ -217,6 +221,7 @@ public class MapActivity extends FragmentActivity implements
         Location pos = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         double lat = pos.getLatitude();
         double lon = pos.getLongitude();
+        coordenadas = String.valueOf(lat)+","+String.valueOf(lon);
         CameraUpdate cam= CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon), KEY_ZOOM);
         GoogleMap map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
         map.animateCamera(cam);
@@ -242,6 +247,7 @@ public class MapActivity extends FragmentActivity implements
 
         Intent intent_name = new Intent(getApplicationContext(),DetailActivity.class);
         intent_name.putExtra("data_to_sent",data_to_sent);
+        intent_name.putExtra("coordenadas",coordenadas);
         startActivity(intent_name);
     }
 
