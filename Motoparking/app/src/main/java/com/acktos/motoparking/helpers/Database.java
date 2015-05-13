@@ -15,7 +15,8 @@ public class Database extends SQLiteOpenHelper {
 	}
 
 	@Override
-	public void onCreate(SQLiteDatabase db) {
+	public void onCreate(SQLiteDatabase db)  {
+        db.execSQL("DROP TABLE IF EXISTS parkings");
 		db.execSQL(TABLA_PARKINGS);
 	}
 
