@@ -120,34 +120,35 @@ public class ParkingController extends Controller {
         c = CR.query(URI_CP, valores_recuperar, null, null, null);
         c.moveToFirst();
 
-        String jsonparking="[";
+        if(c.getCount()>0) {
+            String jsonparking = "[";
 
-        do {
-            id = c.getInt(0);
-            address = c.getString(1);
-            coordinates = c.getString(2);
-            schedule = c.getString(3);
-            price_minute = c.getInt(4);
-            price_hour = c.getInt(5);
-            price_standard = c.getInt(6);
-            image = c.getString(7);
-            comments = c.getString(8);
-            creation_date = c.getString(9);
-            jsonparking += "{\"price_standard\": \""+price_standard+"\", \"price_hour\": \""+price_hour+"\", \"schedule\": \""+schedule+"\", \"price_minute\": \""+price_minute+"\", \"coordinates\": \""+coordinates+"\", \"creation_date\": \""+creation_date+"\", \"comments\": \""+comments+"\", \"image\": \""+image+"\", \"address\": \""+address+"\", \"id\": "+id+"},";
-        } while (c.moveToNext());
+            do {
+                id = c.getInt(0);
+                address = c.getString(1);
+                coordinates = c.getString(2);
+                schedule = c.getString(3);
+                price_minute = c.getInt(4);
+                price_hour = c.getInt(5);
+                price_standard = c.getInt(6);
+                image = c.getString(7);
+                comments = c.getString(8);
+                creation_date = c.getString(9);
+                jsonparking += "{\"price_standard\": \"" + price_standard + "\", \"price_hour\": \"" + price_hour + "\", \"schedule\": \"" + schedule + "\", \"price_minute\": \"" + price_minute + "\", \"coordinates\": \"" + coordinates + "\", \"creation_date\": \"" + creation_date + "\", \"comments\": \"" + comments + "\", \"image\": \"" + image + "\", \"address\": \"" + address + "\", \"id\": " + id + "},";
+            } while (c.moveToNext());
 
-        jsonparking = jsonparking.substring(0, jsonparking.length()-1);
-        jsonparking+="]";
+            jsonparking = jsonparking.substring(0, jsonparking.length() - 1);
+            jsonparking += "]";
 
-        try {
-            JSONArray jsonArray = new JSONArray(jsonparking);
-            for(int i=0;i<jsonArray.length();i++)
-            {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                parkings.add(new Parking(jsonObject));
+            try {
+                JSONArray jsonArray = new JSONArray(jsonparking);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    parkings.add(new Parking(jsonObject));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
         return parkings;
     }

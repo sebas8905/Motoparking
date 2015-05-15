@@ -4,10 +4,8 @@ package com.acktos.motoparking;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.SpannableString;
@@ -18,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.acktos.motoparking.controllers.ParkingController;
 import com.acktos.motoparking.models.Parking;
@@ -208,6 +207,11 @@ public class MapActivity extends FragmentActivity implements
                     }
                 break;
             }
+        }
+        else {
+
+            Toast.makeText(getApplicationContext(), R.string.verify, Toast.LENGTH_LONG).show();
+
         }
     }
 

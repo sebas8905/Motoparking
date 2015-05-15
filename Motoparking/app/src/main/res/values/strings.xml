@@ -79,5 +79,6 @@
     <string name="label_nothing">No hay parqueaderos disponibles en el momento.</string>
     <string name="label_go">Ver ruta</string>
     <string name="label_in">Parqueadero en</string>
+    <string name="verify">No hay parqueaderos disponibles. Verifica tu conexión a Internet</string>
 
 </resources>
